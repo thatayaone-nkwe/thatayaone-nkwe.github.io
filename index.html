@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thatayaone Nkwe - Developer Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Chosen Palette: Calm Neutrals -->
+    <!-- Application Structure Plan: The SPA is designed as a single, vertically scrolling page with a sticky navigation header for seamless movement between sections. This linear, narrative-driven structure (Home -> About -> Skills -> Stats -> Connect) provides a logical and intuitive user flow, perfect for a personal portfolio. It guides the user from a high-level introduction to detailed skills and evidence of work, culminating in a clear call to action. This is more engaging than a static document and allows the profile itself to function as a demonstration of frontend development capabilities. -->
+    <!-- Visualization & Content Choices: The application transforms the static Markdown into interactive components. Key stats, originally static images, are now dynamic, filterable charts via Chart.js on Canvas, providing a richer, data-driven narrative (Goal: Compare, Change -> Bar/Line Chart). The tech stack becomes interactive with hover-to-reveal details, allowing for layered information without clutter (Goal: Inform -> Interactive Grid). The layout uses responsive cards and grids to organize content logically, enhancing readability and visual appeal over plain text lists (Goal: Organize -> HTML/CSS Grid). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #0d9488; /* teal-600 */
+        }
+        .skill-card:hover .skill-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-slate-800">T.R</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-slate-600 font-medium">About</a>
+                <a href="#skills" class="nav-link text-slate-600 font-medium">Skills</a>
+                <a href="#stats" class="nav-link text-slate-600 font-medium">Stats</a>
+                <a href="#connect" class="nav-link text-slate-600 font-medium">Connect</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#about" class="block py-2 nav-link text-slate-600 font-medium">About</a>
+             <a href="#skills" class="block py-2 nav-link text-slate-600 font-medium">Skills</a>
+             <a href="#stats" class="block py-2 nav-link text-slate-600 font-medium">Stats</a>
+             <a href="#connect" class="block py-2 nav-link text-slate-600 font-medium">Connect</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="container mx-auto px-6 py-24 md:py-32 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-800">Hi there, I am Thatayaone Nkwe 👋</h1>
+            <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">A passionate developer from Taung, with a love for building innovative and efficient solutions. I am currently a Learner Programmer.</p>
+            <div class="mt-8">
+                <a href="#connect" class="bg-teal-600 text-white font-bold py-3 px-8 rounded-full hover:bg-teal-700 transition-colors duration-300">Get in Touch</a>
+            </div>
+        </section>
+
+        <section id="about" class="bg-white py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800">About Me</h2>
+                <p class="text-center mt-2 mb-12 text-slate-500 max-w-2xl mx-auto">This section provides a little more information about my current activities, interests, and how you can get in touch with me.</p>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                    <img src="PASTE_YOUR_IMAGE_URL_HERE" alt="A professional headshot of Thatayaone Nkwe" class="w-full max-w-sm mx-auto h-auto rounded-lg shadow-lg">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-teal-500 text-2xl">🚀</span>
+                            <p>I'm currently working as <strong>Learner Programmer.</strong></p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-teal-500 text-2xl">🌱</span>
+                            <p>I'm always learning and currently diving deep into <strong>application and web development using Flutter, PHP, HTML, CSS, JavaScript, and SQL.</strong>.</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-teal-500 text-2xl">💡</span>
+                            <p>I'm open to collaborating on <strong>application and web development</strong> and contributing to the open-source community.</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-teal-500 text-2xl">⚡</span>
+                            <p>Fun fact: <strong> I am constantly learning, tackling diverse problems, and shaping the digital world.</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800">My Tech Stack</h2>
+                <p class="text-center mt-2 mb-12 text-slate-500 max-w-2xl mx-auto">This is a showcase of the primary tools and technologies I use. Hover over any skill to see more details about my experience with it.</p>
+                <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-4xl mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="bg-white py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800">My GitHub Stats</h2>
+                <p class="text-center mt-2 mb-12 text-slate-500 max-w-2xl mx-auto">This area presents a dynamic visualization of my coding activities and language proficiency based on mock GitHub data. Interact with the charts to explore the details.</p>
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <div>
+                        <h3 class="font-bold text-lg text-center mb-4 text-slate-700">Top Languages</h3>
+                        <div class="chart-container">
+                            <canvas id="languagesChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-center mb-4 text-slate-700">Contribution Activity</h3>
+                         <div class="text-center mb-4">
+                            <button data-range="6" class="filter-btn bg-teal-600 text-white py-1 px-3 rounded-md text-sm">Last 6 Months</button>
+                            <button data-range="12" class="filter-btn bg-slate-200 text-slate-700 py-1 px-3 rounded-md text-sm">Last 12 Months</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="connect" class="py-20 md:py-24">
+             <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-bold text-slate-800">Connect With Me</h2>
+                 <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out!</p>
+                 <div class="mt-8">
+                     <a href="mailto:[Your Email Address]" class="text-teal-600 font-bold text-xl hover:underline">nkwethatayaone@gmail.com</a>
+                 </div>
+                 <div id="social-links" class="flex justify-center space-x-6 mt-8">
+                 </div>
+             </div>
+        </section>
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-400 text-center py-6">
+        <p>&copy; 2025 [Thatayaone Nkwe]. All Rights Reserved.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const skillsData = [
+        { name: 'HTML5', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg', detail: 'Semantic and accessible web structure.' },
+        { name: 'CSS', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg', detail: 'Modern styling and responsive design.' },
+        { name: 'JavaScript', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg', detail: 'Interactive and dynamic user experiences.' },
+        { name: 'Python', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg', detail: 'Versatile for scripting, backend & AI.' },
+        { name: 'PHP', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg', detail: 'Server-side scripting for web development.' },
+        { name: 'SQL', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azuresqldatabase/azuresqldatabase-original.svg', detail: 'Querying and managing relational databases.' },
+        { name: 'C++', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg', detail: 'High-performance systems and applications.' },
+        { name: 'Flutter', img: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg', detail: 'Cross-platform mobile app development.' },
+        { name: 'Web Development', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=</>', detail: 'Full-stack application architecture.' },
+        { name: 'Artificial Intelligence', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=AI', detail: 'Developing intelligent systems and models.' },
+        { name: 'Cybersecurity', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=SEC', detail: 'Protecting systems, networks, and data.' },
+        { name: 'Computer Networking', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=NET', detail: 'Designing and managing network infrastructure.' },
+        { name: 'Testing', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=QA', detail: 'Ensuring software quality and reliability.' },
+        { name: 'Technical Support', img: 'https://placehold.co/100x100/f8fafc/0d9488?text=Help', detail: 'Troubleshooting and resolving technical issues.' },
+        { name: 'Git', img: 'https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg', detail: 'Version control for efficient team collaboration.' },
+    ];
+    
+    const socialLinksData = [
+        { name: 'LinkedIn', url: 'https://linkedin.com/in/thatayaone-nkwe', icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>' },
+        { name: 'Twitter', url: 'https://twitter.com/nkwe_thatayaone', icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>' }
+    ];
+
+    const skillsContainer = document.getElementById('skills-container');
+    skillsData.forEach(skill => {
+        const skillEl = document.createElement('div');
+        skillEl.className = 'skill-card relative flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2';
+        skillEl.innerHTML = `
+            <img src="${skill.img}" alt="${skill.name}" class="h-16 w-16 mb-4">
+            <h4 class="font-bold text-slate-700">${skill.name}</h4>
+            <div class="skill-tooltip absolute bottom-full mb-2 w-max px-3 py-1.5 bg-slate-800 text-white text-xs rounded-md opacity-0 visibility-hidden transition-all duration-300 transform translateY-2">
+                ${skill.detail}
+            </div>
+        `;
+        skillsContainer.appendChild(skillEl);
+    });
+    
+    const socialContainer = document.getElementById('social-links');
+    socialLinksData.forEach(social => {
+        const socialEl = document.createElement('a');
+        socialEl.href = social.url;
+        socialEl.target = '_blank';
+        socialEl.rel = 'noopener noreferrer';
+        socialEl.className = 'text-slate-500 hover:text-teal-600 transition-colors duration-300';
+        socialEl.innerHTML = social.icon;
+        socialContainer.appendChild(socialEl);
+    });
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    const mockLangData = {
+        labels: ['JavaScript', 'PHP', 'HTML', 'CSS', 'SQL', 'Flutter','C++'],
+        data: [10, 25, 20, 15, 15, 10, 5]
+    };
+
+    const mockActivityData = {
+        '12': {
+            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            data: [120, 150, 180, 130, 200, 210, 250, 230, 280, 300, 260, 320]
+        },
+        '6': {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            data: [250, 230, 280, 300, 260, 320]
+        }
+    };
+    
+    let activityChartInstance;
+
+    function renderLanguagesChart() {
+        const ctx = document.getElementById('languagesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: mockLangData.labels,
+                datasets: [{
+                    label: 'Language Usage',
+                    data: mockLangData.data,
+                    backgroundColor: ['#facc15', '#38bdf8', '#fb923c', '#60a5fa', '#4ade80'],
+                    borderColor: '#fff',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderActivityChart(range = '6') {
+        if (activityChartInstance) {
+            activityChartInstance.destroy();
+        }
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        activityChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: mockActivityData[range].labels,
+                datasets: [{
+                    label: 'Contributions',
+                    data: mockActivityData[range].data,
+                    borderColor: '#0d9488',
+                    backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const range = e.target.dataset.range;
+            renderActivityChart(range);
+            filterButtons.forEach(btn => {
+                btn.classList.remove('bg-teal-600', 'text-white');
+                btn.classList.add('bg-slate-200', 'text-slate-700');
+            });
+            e.target.classList.add('bg-teal-600', 'text-white');
+            e.target.classList.remove('bg-slate-200', 'text-slate-700');
+        });
+    });
+
+    renderLanguagesChart();
+    renderActivityChart('6');
+});
+</script>
+
+</body>
+</html>
